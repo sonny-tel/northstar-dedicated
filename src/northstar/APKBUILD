@@ -11,7 +11,7 @@ url="https://github.com/sonny-tel/Ion"
 license="MIT"
 
 arch="x86_64"
-source="https://github.com/sonny-tel/Ion/releases/download/v${pkgver}/Ion.release.v${pkgver_ns}.zip"
+source="https://github.com/sonny-tel/Ion/releases/download/v${pkgver_ns}_${pkgver_ion}/Ion.release.v${pkgver_ns}.zip"
 
 check() {
 	ls "$srcdir"
