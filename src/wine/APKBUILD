@@ -1,6 +1,6 @@
 # Maintainer: pg9182 <96569817+pg9182@users.noreply.github.com>
 pkgname=northstar-dedicated-wine
-pkgver=7.0
+pkgver=10.0
 pkgrel=0
 pkgdesc="Patched Wine build for the Northstar dedicated server"
 
@@ -19,7 +19,7 @@ makedepends="autoconf automake bison flex gnutls-dev libxi-dev mingw-w64-gcc min
 # window handle in-between ticks). This will need more debugging later.
 
 options="textrels !check"
-source="https://dl.winehq.org/wine/source/7.0/wine-$pkgver.tar.xz
+source="https://dl.winehq.org/wine/source/10.0/wine-$pkgver.tar.xz
 	rpath.patch
 	winemenubuilder.patch
 	ws2siobacklogquery.patch
