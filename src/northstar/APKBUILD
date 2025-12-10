@@ -1,11 +1,11 @@
 # Maintainer: pg9182 <96569817+pg9182@users.noreply.github.com>
 pkgname=northstar
-pkgver=1.31.4_5
+pkgver=1.31.4.5
 pkgver_tf=2.0.11.0
-pkgver_ns="${pkgver%_*}"
+pkgver_ns="${pkgver%.*}"
 pkgrel=0
 pkgdesc="Northstar binaries and mods"
-pkgver_ion="${pkgver#*_}"
+pkgver_ion="${pkgver##*.}"
 
 url="https://github.com/sonny-tel/Ion"
 license="MIT"
