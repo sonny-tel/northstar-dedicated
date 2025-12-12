@@ -172,6 +172,11 @@ func main() {
 
 	sn, _ := nsc.Get("ns_server_name")
 
+	fmt.Println("Starting Northstar with args:")
+	for i, a := range args {
+		fmt.Printf("    [%d] %q\n", i, a)
+	}
+
 	cmd := &exec.Cmd{
 		Path: "/usr/bin/nswrap",
 		Args: append([]string{"nswrap", nso.Path}, args...),

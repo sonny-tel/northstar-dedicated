@@ -1144,6 +1144,10 @@ int main(int argc, char **argv) {
 
     int fd_pty_slave = ns_ioproc_output_pty(&st_ioproc);
 
+    for (int i = 0; i < wine_argv_n; i++) {
+        ns_log("arg[%d] = '%s'", i, wine_argv[i]);
+    }
+
     pid_t wine_pid = fork();
     if (!wine_pid) {
         setsid();
