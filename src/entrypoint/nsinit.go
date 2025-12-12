@@ -120,7 +120,7 @@ func main() {
 			"sv_updaterate_mp":                    "20",
 			"sv_minupdaterate":                    "20",
 			"sv_max_snapshots_multiplayer":        "300",
-			"net_data_block_enabled":              "0",
+			"net_data_block_enabled":              "1",
 			"host_skip_client_dll_crc":            "1",
 		},
 		map[string]string{
