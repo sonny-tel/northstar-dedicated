@@ -903,6 +903,7 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+#if 0
     // init setproctitle and attempt to ensure there is a placeholder arg consisting of spaces
     for (const char *x = argv[argc - 1]; *x; x++) {
         if (*x != ' ') {
@@ -922,6 +923,7 @@ int main(int argc, char **argv) {
     argc--;
     setproctitle(argv, NULL);
     argv[argc] = NULL;
+#endif
 
     if (chdir(argv[1])) {
         ns_perror("error: chdir '%s'", argv[1]);
