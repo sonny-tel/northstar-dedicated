@@ -8,7 +8,7 @@ fi
 
 cd "$(dirname "$0")/.."
 seg_ever="$(cd src/entrypoint && . APKBUILD && echo "$pkgver")"
-seg_nsver="$(cd src/northstar && . APKBUILD && echo "$pkgver")"
+seg_nsver="$(cd src/northstar && . APKBUILD && echo "$pkgver_ns")"
 seg_tfver="$(cd src/northstar && . APKBUILD && echo "$pkgver_tf")"
 seg_ionver="$(cd src/northstar && . APKBUILD && echo "$pkgver_ion")"
 seg_git="$(git rev-parse --short HEAD)"
