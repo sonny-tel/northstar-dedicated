@@ -37,5 +37,3 @@ jobs:
                   git add northstar/APKBUILD
                   git diff --cached --quiet || git commit -m "chore: update Ion to ${{ github.event.client_payload.version }} patch ${{ github.event.client_payload.patch }}"
                   git push
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
