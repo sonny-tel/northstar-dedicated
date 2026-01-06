@@ -13,7 +13,9 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-
+              with:
+                  fetch-depth: 0
+                  persist-credentials: false
             - name: Update APKBUILD
               run: |
                   VERSION="${{ github.event.client_payload.version }}"
@@ -29,11 +31,11 @@ jobs:
                   # Update sha512sums in APKBUILD
                   # Match the 128-character hex hash before the filename
                   sed -i -E "s/^[a-fA-F0-9]{128}(  Ion\.release\.v)/${SHA512}\1/" src/northstar/APKBUILD
-
             - name: Commit and push changes
-              run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git add src/northstar/APKBUILD
-                  git diff --cached --quiet || git commit -m "chore: update Ion to ${{ github.event.client_payload.version }} patch ${{ github.event.client_payload.patch }}"
-                  git push
+              uses: GuillaumeFalourd/git-commit-push@v1.3
+              with:
+                  email: ${{ github.actor }}@users.noreply.github.com
+                  name: ${{ github.actor }}
+                  access_token: ${{ secrets.GITHUB_TOKEN }}
+                  files: src/northstar/APKBUILD
+                  commit_message: "chore: update Ion to ${{ github.event.client_payload.version }} patch ${{ github.event.client_payload.patch }}"
