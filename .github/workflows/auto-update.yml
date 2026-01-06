@@ -24,16 +24,16 @@ jobs:
                   PKGVER="${VERSION#v}.${PATCH}"
 
                   # Update pkgver in APKBUILD
-                  sed -i "s/^pkgver=.*/pkgver=${PKGVER}/" northstar/APKBUILD
+                  sed -i "s/^pkgver=.*/pkgver=${PKGVER}/" src/northstar/APKBUILD
 
                   # Update sha512sums in APKBUILD
                   # Match the 128-character hex hash before the filename
-                  sed -i -E "s/^[a-fA-F0-9]{128}(  Ion\.release\.v)/${SHA512}\1/" northstar/APKBUILD
+                  sed -i -E "s/^[a-fA-F0-9]{128}(  Ion\.release\.v)/${SHA512}\1/" src/northstar/APKBUILD
 
             - name: Commit and push changes
               run: |
                   git config user.name "github-actions[bot]"
                   git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git add northstar/APKBUILD
+                  git add src/northstar/APKBUILD
                   git diff --cached --quiet || git commit -m "chore: update Ion to ${{ github.event.client_payload.version }} patch ${{ github.event.client_payload.patch }}"
                   git push
