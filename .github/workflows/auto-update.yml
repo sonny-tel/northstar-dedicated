@@ -36,6 +36,6 @@ jobs:
               with:
                   email: ${{ github.actor }}@users.noreply.github.com
                   name: ${{ github.actor }}
-                  access_token: ${{ secrets.GITHUB_TOKEN }}
+                  access_token: ${{ secrets.PUSH_TOKEN }}
                   files: src/northstar/APKBUILD
                   commit_message: "chore: update Ion to ${{ github.event.client_payload.version }} patch ${{ github.event.client_payload.patch }}"
