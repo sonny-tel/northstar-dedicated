@@ -16,6 +16,34 @@ jobs:
               with:
                   fetch-depth: 0
                   persist-credentials: false
+            - name: Check required variables
+              run: |
+                  MISSING_VARS=()
+
+                  if [ -z "${{ github.event.client_payload.version }}" ]; then
+                      MISSING_VARS+=("version")
+                  fi
+
+                  if [ -z "${{ github.event.client_payload.patch }}" ]; then
+                      MISSING_VARS+=("patch")
+                  fi
+
+                  if [ -z "${{ github.event.client_payload.sha512 }}" ]; then
+                      MISSING_VARS+=("sha512")
+                  fi
+
+                  SHA512="${{ github.event.client_payload.sha512 }}"
+                  if [ -n "$SHA512" ] && ! echo "$SHA512" | grep -qE '^[a-fA-F0-9]{128}$'; then
+                      echo "Error: sha512 is not a valid 128-character hex string"
+                      exit 1
+                  fi
+
+                  if [ ${#MISSING_VARS[@]} -ne 0 ]; then
+                      echo "Error: Missing required variables in client_payload: ${MISSING_VARS[*]}"
+                      exit 1
+                  fi
+
+                  echo "All required variables are present and valid"
             - name: Update APKBUILD
               run: |
                   VERSION="${{ github.event.client_payload.version }}"
