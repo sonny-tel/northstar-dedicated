@@ -908,8 +908,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    if (access("NorthstarLauncher.exe", F_OK)) {
-        ns_log("error: NorthstarLauncher.exe missing");
+    if (access("r2ds.exe", F_OK)) {
+        ns_log("error: r2ds.exe missing");
         return 1;
     }
 
@@ -1102,8 +1102,7 @@ int main(int argc, char **argv) {
     char **wine_argv = alloca(sizeof(char **) * (argc + 2)); // args (replacing 0 with wine64) + -dedicated + terminator
 
     wine_argv[wine_argv_n++] = "wine64";
-    wine_argv[wine_argv_n++] = "NorthstarLauncher.exe";
-    wine_argv[wine_argv_n++] = "-dedicated";
+    wine_argv[wine_argv_n++] = "r2ds.exe";
 
     for (int i = 2; i < argc; i++) {
         wine_argv[wine_argv_n++] = argv[i];
